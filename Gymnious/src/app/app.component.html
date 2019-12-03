@@ -1,3 +1,41 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Ficharify</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content id="sideMenu">
+      <ion-item class="item item-trns">
+        <ion-buttons>
+          <ion-button (click)="onClick()">
+            CARDIO
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item class="item item-trns">
+        <ion-buttons>
+          <ion-button (click)="onClick()">
+            PESAS
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item class="item item-trns">
+        <ion-buttons>
+          <ion-button (click)="onClick()">
+            ABDOMINALES
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item class="item item-trns">
+        <ion-buttons>
+          <ion-button (click)="onClick()">
+            OTROS
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="sideMenu" main></ion-router-outlet>
 </ion-app>
