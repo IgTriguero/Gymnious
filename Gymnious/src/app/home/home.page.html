@@ -3,7 +3,7 @@
     <ion-buttons slot="start" class="ion-hide-md-up">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title slot="start">
+    <ion-title slot="start" (click)="toHome()">
       Gymnious
     </ion-title>
     <div slot="start" class="ion-hide-sm-down">
@@ -40,7 +40,7 @@
         </ion-row>
       </ion-grid>
     </div>
-    <ion-button (click)="onClick()" slot="end">
+  <ion-button (click)="perfil()" slot="end">
       <ion-icon slot="icon-only" name="person"></ion-icon>
     </ion-button>
   </ion-toolbar>

@@ -7,12 +7,12 @@ import {
   AngularFirestoreDocument
 } from "@angular/fire/firestore";
 import { Observable, of } from "rxjs";
-import { switchMap, take } from "rxjs/operators";
-import { EmailValidator } from "@angular/forms";
+import { switchMap } from "rxjs/operators";
 
 interface User {
   uid: string;
   email: string;
+  photoUrl?: string;
   displayName?: string;
 }
 @Injectable({
@@ -37,6 +37,10 @@ export class AuthService {
     );
   }
 
+  isAuth(){
+    return firebase.auth().currentUser;
+  }
+
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
@@ -45,7 +49,7 @@ export class AuthService {
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider).then(credential => {
       this.updateUserData(credential.user);
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl("/home");
     });
   }
 
@@ -57,6 +61,7 @@ export class AuthService {
     const data: User = {
       uid: user.uid,
       email: user.email,
+      photoUrl: user.photoUrl,
       displayName: user.displayName
     };
 

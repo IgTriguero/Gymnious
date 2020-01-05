@@ -18,6 +18,10 @@ export class AppComponent {
     this.initializeApp();
   }
 
+  onClick(){//TODO remove
+    console.log("funciona bro");
+  }
+
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
