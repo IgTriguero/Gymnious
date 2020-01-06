@@ -41,6 +41,10 @@ export class AuthService {
     return firebase.auth().currentUser;
   }
 
+  logout(){
+    this.afAuth.auth.signOut();
+  }
+
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
@@ -48,8 +52,8 @@ export class AuthService {
 
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider).then(credential => {
+      this.router.navigateByUrl("/perfil");
       this.updateUserData(credential.user);
-      this.router.navigateByUrl("/home");
     });
   }
 

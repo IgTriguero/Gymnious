@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -26,14 +26,56 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 ion-content {
-    --background: linear-gradient(#4683AF, #99C5E5);
+  --background: linear-gradient(#4683af, #99c5e5);
 }
-.item.item-trns{
-    border-color: rgba(0, 0, 0, 0);
-	--background: rgba(0, 0, 0, 0);
-	color: white; 
+.item.item-trns {
+  border-color: rgba(0, 0, 0, 0);
+  --background: rgba(0, 0, 0, 0);
+  color: white;
 }
 ion-toolbar {
-    --background: #4363ac;
-    color:white;
+  --background: #4363ac;
+  color: white;
+}
+
+$white: #fff;
+$google-blue: #4285f4;
+$button-active-blue: #1669f2;
+
+.google-btn {
+  width: 250px;
+  height: 42px;
+  margin: 0px;
+  background-color: $google-blue;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  .google-icon-wrapper {
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    background-color: $white;
+  }
+  .google-icon {
+    position: absolute;
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 18px;
+    height: 18px;
+  }
+  .btn-text {
+    float: right;
+    margin: 11px 11px 0 0;
+    color: $white;
+    font-size: 16px;
+    //letter-spacing: 0.2px;
+  }
+  &:hover {
+    box-shadow: 0 0 6px $google-blue;
+  }
+  &:active {
+    background: $button-active-blue;
+  }
 }

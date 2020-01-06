@@ -1,46 +1,55 @@
-import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { AuthService } from '../auth/auth.service';
-import { Router } from '@angular/router';
-import { PopoverController } from '@ionic/angular';
+import { Component, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
+import { AuthService } from "../auth/auth.service";
+import { Router } from "@angular/router";
+import { PopoverController, Events } from "@ionic/angular";
+import { LoginComponent } from "../login/login.component";
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: "app-home",
+  templateUrl: "home.page.html",
+  styleUrls: ["home.page.scss"]
 })
 export class HomePage implements OnInit {
+  constructor(
+    private titleService: Title,
+    private authService: AuthService,
+    private router: Router,
+    public popoverController: PopoverController,
+    private events: Events
+  ) {}
 
-  constructor(private titleService: Title, private authService: AuthService, private router: Router, public popoverController: PopoverController) { }
-
-  ngOnInit(){
-    this.titleService.setTitle("Gymnious")
+  ngOnInit() {
+    this.titleService.setTitle("Gymnious");
   }
 
-  onClick(){ //TODO remove
+  onClick() {
+    //TODO remove
     console.log("funciona bro");
   }
-  toHome(){
+  toHome() {
     this.router.navigateByUrl("/home");
   }
-  
-  login = '<div class="container mt-5"><h2>Google Login</h2>  <div class="row mt-5">    <div class="col-md-4 mt-2 m-auto ">        <button class="loginBtn loginBtn--google" #loginRef>            Login with Google          </button>    </div>      </div></div>"';
 
-  async showPopover(ev: any){
+  logout(){
+    this.authService.logout();
+  }
+  async showPopover(ev: any) {
     const popover = await this.popoverController.create({
-      component: this.login,
+      component: LoginComponent,
       event: ev,
-
+      cssClass: 'loginPopover'
     });
+    
     return await popover.present();
   }
-  perfil(){
-    if(this.authService.isAuth()){
+
+  perfil(ev: any) {
+    if (this.authService.isAuth()) {
       console.log("iniciado sesion");
       this.router.navigateByUrl("/perfil");
     } else {
       console.log("a iniciar sesion");
-      this.showPopover();
-      //this.authService.googleLogin();
+      this.showPopover(ev);
     }
   }
 }
