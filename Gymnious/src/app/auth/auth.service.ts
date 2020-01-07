@@ -19,7 +19,7 @@ interface User {
   providedIn: "root"
 })
 export class AuthService {
-  user: Observable<User>;
+  user: Observable<any>;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -28,8 +28,8 @@ export class AuthService {
   ) {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
-        if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+        if(user) {
+          return this.afs.doc(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
@@ -37,12 +37,13 @@ export class AuthService {
     );
   }
 
-  isAuth(){
+  isAuth() {
     return firebase.auth().currentUser;
   }
 
-  logout(){
+  logout() {
     this.afAuth.auth.signOut();
+    this.router.navigateByUrl("/home");
   }
 
   googleLogin() {
@@ -58,6 +59,7 @@ export class AuthService {
   }
 
   private updateUserData(user) {
+    console.log(user)
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
       `users/${user.uid}`
     );
@@ -65,10 +67,11 @@ export class AuthService {
     const data: User = {
       uid: user.uid,
       email: user.email,
-      photoUrl: user.photoUrl,
+      photoUrl: user.photoURL,
       displayName: user.displayName
     };
-
+    console.log(data);
     return userRef.set(data);
   }
+
 }

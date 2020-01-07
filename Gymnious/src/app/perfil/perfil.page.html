@@ -10,11 +10,34 @@
 </ion-header>
 
 <ion-content>
-  <div>
-    <div>
-      <div>
-        <img src="{{ ( authService.user | async )?.photoUrl }}" alt="">
-      </div>
-    </div>
-  </div>
+  <ion-grid fixed>
+    <ion-row class="userPhoto-buttons-name-content">
+
+      <ion-col class="userPhoto-content">
+        <div *ngIf="( authService.user | async )?.photoUrl">
+          <img src="{{ ( authService.user | async )?.photoUrl }}" alt="" class="userPhoto">
+        </div>
+        <div *ngIf="!( authService.user | async )?.photoUrl">
+          <img src="../../assets/images/default-user.jpg" alt="" class="userPhoto">
+        </div>
+      </ion-col>
+      <ion-col class="name-content">
+        <ion-row>
+          <p>{{ ( authService.user | async)?.displayName }}</p>
+        </ion-row>
+      </ion-col>
+      <ion-col class="buttons-content">
+        <div>
+          <ion-button (click)="cerrarSesion()">
+            Cerrar Sesión
+          </ion-button>
+        </div>
+        <div>
+          <ion-button (click)="editar()">
+            Editar
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
