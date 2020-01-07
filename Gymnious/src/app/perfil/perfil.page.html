@@ -14,11 +14,8 @@
     <ion-row class="userPhoto-buttons-name-content">
 
       <ion-col class="userPhoto-content">
-        <div *ngIf="( authService.user | async )?.photoUrl">
+        <div>
           <img src="{{ ( authService.user | async )?.photoUrl }}" alt="" class="userPhoto">
-        </div>
-        <div *ngIf="!( authService.user | async )?.photoUrl">
-          <img src="../../assets/images/default-user.jpg" alt="" class="userPhoto">
         </div>
       </ion-col>
       <ion-col class="name-content">
