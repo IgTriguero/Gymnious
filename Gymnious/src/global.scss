@@ -25,6 +25,12 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+.ion-card {
+  padding: 1em;
+  --background: rgba(255, 255, 255, );
+  color:black;
+}
+
 ion-content {
   --background: linear-gradient(#4683af, #99c5e5);
 }
@@ -78,4 +84,26 @@ $button-active-blue: #1669f2;
   &:active {
     background: $button-active-blue;
   }
+}
+
+.popover-content{
+    --width: 250px;
+}
+.userPhoto-buttons-name-content {
+    background-color: green;
+    height: 30vh;
+    padding: 20px;
+    .userPhoto-content{
+        background-color: red;
+        .userPhoto{
+            width: 10em;
+        }
+    }
+    .name-content{
+        background-color: yellow;
+    }
+    .buttons-content{
+        background-color: orange;
+
+    }
 }

@@ -20,4 +20,10 @@ export class PerfilPage implements OnInit {
   toHome(){
     this.router.navigateByUrl("/home");
   }
+  cerrarSesion(){
+    this.authService.logout();
+  }
+  editar(){
+    
+  }
 }
