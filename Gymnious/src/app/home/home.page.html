@@ -40,15 +40,15 @@
         </ion-row>
       </ion-grid>
     </div>
-    <img *ngIf="authService.isAuth()" src="{{ (authService.user | async)?.photoUrl }}" alt="" (click)="perfil($event)" slot="end" class="fotoPerfilNavBar">
-    <ion-button *ngIf="!authService.isAuth()" (click)="perfil($event)" slot="end" class="buttonPerfil">
+    <img src="{{ (authService.user | async)?.photoUrl }}" alt="" (click)="toPerfil($event)" slot="end" class="fotoPerfilNavBar">
+    <ion-button (click)="inicioSesion($event)" slot="end" class="buttonPerfil">
       <ion-icon slot="icon-only" name="person" ></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid class="ion-grid">
     <ion-row>
       <ion-col *ngFor="let item of activities | async" col-6 no-padding>
         <ion-card class="ion-card">

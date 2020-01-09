@@ -14,6 +14,7 @@ interface User {
   email: string;
   photoUrl?: string;  //puede tener o no tener foto
   displayName?: string;
+  actividades: [];
 }
 @Injectable({
   providedIn: "root"
@@ -68,7 +69,8 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       photoUrl: user.photoURL,
-      displayName: user.displayName
+      displayName: user.displayName,
+      actividades: []
     };
     console.log(data);
     return userRef.set(data);

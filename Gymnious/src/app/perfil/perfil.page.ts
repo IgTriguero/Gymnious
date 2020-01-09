@@ -8,11 +8,13 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  
+  user;
   constructor(private router: Router, public authService: AuthService) { 
+    this.user = this.authService.afAuth.auth.currentUser;
   }
 
   ngOnInit() {
+    
   }
   updateProfile(){
 

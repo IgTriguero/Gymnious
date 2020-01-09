@@ -15,12 +15,12 @@
 
       <ion-col class="userPhoto-content">
         <div>
-          <img src="{{ ( authService.user | async )?.photoUrl }}" alt="" class="userPhoto">
+          <img src="{{  user.photoURL }}" alt="" class="userPhoto">
         </div>
       </ion-col>
       <ion-col class="name-content">
         <ion-row>
-          <p>{{ ( authService.user | async)?.displayName }}</p>
+          <p>{{ user.displayName }}</p>
         </ion-row>
       </ion-col>
       <ion-col class="buttons-content">
