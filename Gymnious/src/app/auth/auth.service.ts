@@ -14,22 +14,22 @@ interface User {
   email: string;
   photoUrl?: string;  //puede tener o no tener foto
   displayName?: string;
-  
 }
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
-  user: Observable<any>;
-
+  user: Observable<User>;
+  actividades: Observable<any>;
   constructor(
-    private afAuth: AngularFireAuth,
+    public afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router
   ) {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if(user) {
+          this.actividades = this.afs.doc(`users/${user.uid}/actividades`).valueChanges()
           return this.afs.doc(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
