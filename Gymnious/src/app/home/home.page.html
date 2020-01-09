@@ -40,7 +40,7 @@
         </ion-row>
       </ion-grid>
     </div>
-  <ion-button (click)="perfil($event)" slot="end">
+    <ion-button (click)="perfil($event)" slot="end">
       <ion-icon slot="icon-only" name="person"></ion-icon>
     </ion-button>
   </ion-toolbar>
@@ -53,8 +53,14 @@
         <ion-card-title>{{ item.title }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-      {{item.description}}  
+        {{item.description}}
       </ion-card-content>
+      <ion-button (click)="guardarActividad(item.uid)">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+      <ion-button (click)="eliminarActividad(item.uid)">
+        <ion-icon slot="icon-only" name="delete"></ion-icon>
+      </ion-button>
     </ion-card>
   </div>
 

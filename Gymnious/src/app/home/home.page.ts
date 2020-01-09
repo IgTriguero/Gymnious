@@ -4,9 +4,9 @@ import { AuthService } from "../auth/auth.service";
 import { Router } from "@angular/router";
 import { PopoverController, Events } from "@ionic/angular";
 import { LoginComponent } from "../login/login.component";
-import { FirebaseFirestore } from "@angular/fire";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
+import { PerfilService } from '../perfil/perfil.service';
 @Component({
   selector: "app-home",
   templateUrl: "home.page.html",
@@ -22,7 +22,8 @@ export class HomePage implements OnInit {
     private authService: AuthService,
     private router: Router,
     public popoverController: PopoverController,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private perfilService: PerfilService
   ) {}
 
   ngOnInit() {
@@ -58,5 +59,12 @@ export class HomePage implements OnInit {
       console.log("a iniciar sesion");
       this.showPopover(ev);
     }
+  }
+
+  guardarActividad(uid: string){
+    this.perfilService.addToActividades(uid);
+  }
+  eliminarActividad(uid:string){
+    this.perfilService.removeFromActividades(uid);
   }
 }
