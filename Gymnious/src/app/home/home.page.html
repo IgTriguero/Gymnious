@@ -48,15 +48,19 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    <ion-card class="ion-card" *ngFor="let item of activities | async">
-      <ion-card-header class="ion-card-header">
-        <ion-card-title>{{ item.title }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-      {{item.shortDescription}}  
-      </ion-card-content>
-    </ion-card>
-  </div>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of activities | async" col-6 no-padding>
+        <ion-card class="ion-card">
+          <ion-card-header class="ion-card-header">
+            <ion-img [src]="item.photoURL"></ion-img>
+            <ion-card-title>{{ item.title }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+          {{item.shortDescription}}  
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
