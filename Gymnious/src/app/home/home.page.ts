@@ -19,7 +19,7 @@ export class HomePage implements OnInit {
 
   constructor(
     private titleService: Title,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
     public popoverController: PopoverController,
     private afs: AngularFirestore,
@@ -51,14 +51,11 @@ export class HomePage implements OnInit {
     return await popover.present();
   }
 
-  perfil(ev: any) {
-    if (this.authService.isAuth()) {
-      console.log("iniciado sesion");
-      this.router.navigateByUrl("/perfil");
-    } else {
-      console.log("a iniciar sesion");
-      this.showPopover(ev);
-    }
+  toPerfil(){
+    this.router.navigateByUrl("/perfil");
+  }
+  inicioSesion(ev: any) {
+    this.showPopover(ev);
   }
 
   guardarActividad(uid: string){

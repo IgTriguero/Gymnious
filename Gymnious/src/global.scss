@@ -26,9 +26,11 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 .ion-card {
-  padding: 1em;
-  --background: rgba(255, 255, 255, );
+  --background: rgba(255, 255, 255, 0.26);
   color:black;
+  .ion-card-header {
+    --background: rgba(255, 255, 255, 0.26);
+  }
 }
 
 ion-content {
@@ -87,23 +89,39 @@ $button-active-blue: #1669f2;
 }
 
 .popover-content{
-    --width: 250px;
+   --width: 250px;
 }
-.userPhoto-buttons-name-content {
-    background-color: green;
-    height: 30vh;
-    padding: 20px;
-    .userPhoto-content{
-        background-color: red;
-        .userPhoto{
-            width: 10em;
-        }
-    }
-    .name-content{
-        background-color: yellow;
-    }
-    .buttons-content{
-        background-color: orange;
 
+.userPhoto-buttons-name-content {
+  background-color: green;
+  height: 30vh;
+  padding: 20px;
+  .userPhoto-content{
+    background-color: red;
+    .userPhoto{
+      width: 10em;
+      border-radius: 50%;
     }
+  }
+  .name-content{
+    background-color: yellow;
+  }
+  .buttons-content{
+    background-color: orange;
+
+  }
+}
+
+.fotoPerfilNavBar{
+  margin-right: 1em;
+  border-radius: 50%;
+  width: 2.8em; 
+  height: 2.8em;
+}
+.fotoPerfilNavBar :hover{
+  cursor: pointer;
+}
+  
+.buttonPerfil{
+  margin-right: 1em;
 }

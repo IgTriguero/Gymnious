@@ -12,9 +12,8 @@ import { switchMap } from "rxjs/operators";
 interface User {
   uid: string;
   email: string;
-  photoUrl?: string;
+  photoUrl?: string;  //puede tener o no tener foto
   displayName?: string;
-
 }
 @Injectable({
   providedIn: "root"
@@ -61,7 +60,6 @@ export class AuthService {
   }
 
   private updateUserData(user) {
-    console.log(user)
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
       `users/${user.uid}`
     );
