@@ -44,7 +44,10 @@
         <ion-card class="ion-card">
           <ion-img [src]="item?.photoURL"></ion-img>
           <ion-card-header class="ion-card-header">
-            <ion-card-title>{{ item.title }}</ion-card-title>
+            <ion-title>{{item.title}}</ion-title>
+            <ion-button class="button-add">
+              <ion-icon (click)="eliminarActividad(item.uid)" name="add"></ion-icon>
+            </ion-button>
           </ion-card-header>
           <ion-card-content>
             {{item.shortDescription}}

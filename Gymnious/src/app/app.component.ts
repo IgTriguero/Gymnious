@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { HomePage } from './home/home.page';
 
 @Component({
   selector: 'app-root',
@@ -18,14 +19,11 @@ export class AppComponent {
     this.initializeApp();
   }
 
-  onClick(){//TODO remove
-    console.log("funciona bro");
-  }
-
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
   }
+
 }
