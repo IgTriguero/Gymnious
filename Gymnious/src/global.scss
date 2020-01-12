@@ -32,6 +32,7 @@
 .ion-card {
   --background: rgba(255, 255, 255, 0.26);
   color:black;
+  min-width: 25em;
   .ion-card-header {
     --background: rgba(255, 255, 255, 0.26);
   }
