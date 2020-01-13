@@ -6,21 +6,19 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { LoginComponent } from '../login/login.component';
+import { ActividadModalModule } from '../actividad-modal/actividad-modal.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ActividadModalModule,
     RouterModule.forChild([
       {
         path: '',
         component: HomePage
-      }, 
-     /* {
-        path:'../login/login.component',
-        component: LoginComponent
-      }*/
+      }
     ])
   ],
   entryComponents:[],

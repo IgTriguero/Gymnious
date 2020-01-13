@@ -13,6 +13,7 @@ import { firebaseConfig } from "../environments/environment";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { LoginComponent } from "./login/login.component";
+import { ActividadModalComponent } from './actividad-modal/actividad-modal.component';
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   entryComponents: [LoginComponent],

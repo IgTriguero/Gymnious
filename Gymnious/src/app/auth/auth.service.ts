@@ -14,7 +14,7 @@ interface User {
   email: string;
   photoUrl?: string;  //puede tener o no tener foto
   displayName?: string;
-  actividades: [];
+  actividades?: [];
 }
 @Injectable({
   providedIn: "root"
@@ -30,7 +30,6 @@ export class AuthService {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if(user) {
-          this.actividades = this.afs.doc(`users/${user.uid}/actividades`).valueChanges()
           return this.afs.doc(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
@@ -70,9 +69,8 @@ export class AuthService {
       email: user.email,
       photoUrl: user.photoURL,
       displayName: user.displayName,
-      actividades: []
+      actividades: user.actividades
     };
-    console.log(data);
     return userRef.set(data);
   }
 
