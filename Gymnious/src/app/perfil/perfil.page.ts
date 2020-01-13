@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { PerfilService } from './perfil.service';
 import { switchMap } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ModalController } from '@ionic/angular';
+import { ActividadModalComponent } from '../actividad-modal/actividad-modal.component';
 
 @Component({
   selector: 'app-perfil',
@@ -16,8 +18,9 @@ export class PerfilPage implements OnInit {
   actividades:Observable<any>;
   subscripcion;
   arrSubscripciones;
-  edit:Boolean = false;
-  constructor(private router: Router, public authService: AuthService, public perfilService: PerfilService, private afs: AngularFirestore) { 
+  edit:Boolean;
+  constructor(private router: Router, public authService: AuthService, public perfilService: PerfilService, private afs: AngularFirestore,
+    private modalController: ModalController) { 
     this.user = this.authService.user;
   }
 
@@ -26,7 +29,17 @@ export class PerfilPage implements OnInit {
       this.arrSubscripciones = user.actividades;
       this.actividades = this.afs.collection("activities", ref => ref.where("uid","in",this.arrSubscripciones)).valueChanges();
     });
+    this.edit = false;
   }
+    async mostrarModal(item:any){
+      const modal = await this.modalController.create({
+        component: ActividadModalComponent,
+        componentProps: {
+          item
+        }
+      });
+      return await modal.present();
+    }
   toHome(){
     this.router.navigateByUrl("/home");
   }

@@ -7,8 +7,8 @@ import { LoginComponent } from "../login/login.component";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
 import { PerfilService } from '../perfil/perfil.service';
-import { ActividadModalComponent } from '../actividad-modal/actividad-modal.component'
-import { HomeService } from './home.service'
+import { ActividadModalComponent } from '../actividad-modal/actividad-modal.component';
+import { HomeService } from './home.service';
 @Component({
   selector: "app-home",
   templateUrl: "home.page.html",

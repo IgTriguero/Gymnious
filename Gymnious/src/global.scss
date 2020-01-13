@@ -24,6 +24,33 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+.logo{
+  height: 2.8em;
+}
+.card {
+  margin: 0 auto;
+
+  .header {
+    padding: 1em;
+      .avatar {
+          width: 17em; //40vw
+          height: 17em;
+          position: relative;
+          margin: auto;
+          img {
+              display: block;
+              border-radius: 50%;
+              position: absolute;
+          }
+          
+      }
+      
+  }
+}
+
+.username-mobile{
+  font-size: 2em;
+}
 
 .shortDes {
   margin-top: 1em;
@@ -35,6 +62,10 @@
 }
 
 .ion-grid-home{
+  width: 70%;
+}
+
+.ion-grid-profile  {
   width: 70%;
 }
 
@@ -104,26 +135,29 @@ $button-active-blue: #1669f2;
 }
 
 .userPhoto-buttons-name-content {
-  background-color: green;
   padding: 20px;
   .userPhoto-content{
-    background-color: red;
       .userPhoto{
-        width: 20em;
+        width: 17em;
         border-radius: 50%;
       }
   }
   .name-content{
-    background-color: yellow;
+    height: 50%;
+    .p {
+      font-size: 3em;
+      text-align: center;
+    }
   }
   
   .buttons-content{
-    background-color: orange;
+    margin-top: 2%;
+    margin-bottom: 2%;
     .close-session {
-      min-width: 20em;
+      width: 100%;
     }
     .edit{
-      min-width: 20em;
+      width: 100%;
     }
 
   }

@@ -3,9 +3,7 @@
     <ion-buttons slot="start" class="ion-hide-md-up">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title slot="start" (click)="toHome()">
-      Gymnious
-    </ion-title>
+    <img class="logo" slot="start" (click)="toHome()" src="https://imgur.com/HlrI7IF.png"/>
     <div slot="start" class="ion-hide-sm-down">
       <ion-grid>
         <ion-row>
@@ -49,23 +47,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid class="ion-grid-home responsive-sm">
+  <ion-grid class="ion-grid-home ion-hide-sm-down">
     <ion-row>
       <ion-col *ngFor="let item of activities | async" size="6" no-padding>
         <ion-card class="ion-card">
           <ion-img [src]="item.photoURL"></ion-img>
           <ion-card-header class="title">
-            <ion-title (click)="mostrarModal(item)>{{item.title}}</ion-title>
-            <ion-button class="button-add">
-              <ion-icon (click)="guardarActividad(item.uid)" name="add"></ion-icon>
+            <ion-title (click)="mostrarModal(item)">{{item.title}}</ion-title>
+            <ion-button class="button-add" (click)="guardarActividad(item.uid)">
+              <ion-icon slot="icon-only" name="add"></ion-icon>
             </ion-button>
           </ion-card-header>
           <ion-card-content class="shortDes">
           {{item.shortDescription}}  
           </ion-card-content>
-          <ion-button (click)="guardarActividad(item.uid)">
-            Save
-          </ion-button>
           <p>
             {{item.tag}}
           </p>
@@ -73,4 +68,19 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-card class="ion-card ion-hide-md-up" *ngFor="let item of activities | async">
+    <ion-img [src]="item.photoURL"></ion-img>
+    <ion-card-header class="title">
+      <ion-title (click)="mostrarModal(item)">{{item.title}}</ion-title>
+      <ion-button class="button-add" (click)="guardarActividad(item.uid)">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-card-header>
+    <ion-card-content class="shortDes">
+    {{item.shortDescription}}  
+    </ion-card-content>
+    <p>
+      {{item.tag}}
+    </p>
+  </ion-card>
 </ion-content>

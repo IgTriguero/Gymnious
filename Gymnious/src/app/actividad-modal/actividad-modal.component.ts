@@ -15,4 +15,7 @@ export class ActividadModalComponent implements OnInit {
 
   ngOnInit() {}
 
+  dismissModal(){
+    this.modalController.dismiss();
+  }
 }

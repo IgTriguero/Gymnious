@@ -3,27 +3,22 @@
     <ion-buttons slot="start" class="ion-hide-md-up">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title slot="start" (click)="toHome()">
-      Perfil
-    </ion-title>
+    <img class="logo" slot="start" (click)="toHome()" src="https://imgur.com/HlrI7IF.png"/>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid class="ion-hide-sm-down">
     <ion-row class="userPhoto-buttons-name-content">
-      <ion-col class="userPhoto-content">
+      <ion-col class="userPhoto-content" size="2">
         <div>
           <img src="{{ (authService.user | async)?.photoUrl }}" alt="" class="userPhoto">
         </div>
       </ion-col>
-      <ion-col class="name-content">
-        <ion-row>
-          <p>{{ (authService.user | async)?.displayName }}</p>
-
-        </ion-row>
+      <ion-col class="name-content ion-text-center ion-text-justify">
+        <p class="p">{{ (authService.user | async)?.displayName }}</p>
       </ion-col>
-      <ion-col class="buttons-content" size="2">
+      <ion-col class="buttons-content" size="3">
         <div>
           <ion-button class="close-session" (click)="cerrarSesion()">
             Cerrar Sesión
@@ -37,25 +32,57 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid class="ion-grid">
+
+  <div class="ion-no-padding ion-hide-md-up">
+    <div class="card">
+      <div class="header">
+        <div class="avatar">
+          <img src="{{ (authService.user | async)?.photoUrl }}" alt="">
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="user-meta ion-text-center">
+          <ion-title class="username-mobile">{{ (authService.user | async)?.displayName }}</ion-title>
+        </div>
+
+        <ion-button expand="full" (click)="cerrarSesion()">CERRAR SESION</ion-button>
+        <ion-button expand="full" (click)="editar()">EDITAR</ion-button>
+      </div>
+    </div>
+  </div>
+
+  <ion-grid class="ion-grid-profile ion-hide-sm-down">
     <ion-row>
-      <ion-col *ngFor="let item of actividades | async" col-6 no-padding>
+      <ion-col *ngFor="let item of actividades | async" size="6" no-padding>
         <ion-card class="ion-card">
           <ion-img [src]="item?.photoURL"></ion-img>
           <ion-card-header class="ion-card-header">
-            <ion-title>{{item.title}}</ion-title>
-            <ion-button class="button-add">
-              <ion-icon (click)="eliminarActividad(item.uid)" name="add"></ion-icon>
+            <ion-title (click)="mostrarModal(item)">{{item.title}}</ion-title>
+            <ion-button *ngIf="edit" class="button-add" (click)="eliminarActividad(item.uid)">
+              <ion-icon name="close"></ion-icon>
             </ion-button>
           </ion-card-header>
           <ion-card-content>
             {{item.shortDescription}}
           </ion-card-content>
-          <ion-button *ngIf="edit" (click)="eliminarActividad(item.uid)">
-            Borrar
-          </ion-button>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-card class="ion-card ion-hide-md-up" *ngFor="let item of actividades | async">
+    <ion-img [src]="item.photoURL"></ion-img>
+    <ion-card-header class="title">
+      <ion-title (click)="mostrarModal(item)">{{item.title}}</ion-title>
+      <ion-button *ngIf="edit" class="button-add" (click)="eliminarActividad(item.uid)">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-card-header>
+    <ion-card-content class="shortDes">
+      {{item.shortDescription}}
+    </ion-card-content>
+    <p>
+      {{item.tag}}
+    </p>
+  </ion-card>
+
 </ion-content>

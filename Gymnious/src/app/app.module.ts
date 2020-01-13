@@ -19,7 +19,7 @@ import { ActividadModalComponent } from './actividad-modal/actividad-modal.compo
   entryComponents: [LoginComponent],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({mode:"md"}),
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,

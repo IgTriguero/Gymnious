@@ -1,7 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{actividad.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <ion-title>{{actividad.title}}</ion-title>
-  <ion-img [src]="actividad.photoURL"></ion-img>
-  <ion-text color="primary">
-    {{actividad.description}}
-  </ion-text>
+  <div>
+    <ion-img [src]="actividad.photoURL"></ion-img>
+    <div>
+      <p>
+        <ion-text color="primary">
+          {{actividad.description}}
+        </ion-text>
+      </p>
+    </div>
+  </div>
 </ion-content>
