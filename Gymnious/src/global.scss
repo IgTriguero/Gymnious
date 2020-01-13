@@ -25,21 +25,28 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.ion-grid{
+.shortDes {
+  margin-top: 1em;
+}
+
+.button-add {
+  margin-top: -2em;
+  float: right;
+}
+
+.ion-grid-home{
   width: 70%;
 }
 
 .ion-card {
   --background: rgba(255, 255, 255, 0.26);
   color:black;
-  .ion-card-header {
-    --background: rgba(255, 255, 255, 0.26);
-  }
 }
 
 ion-content {
   --background: linear-gradient(#4683af, #99c5e5);
 }
+
 .item.item-trns {
   border-color: rgba(0, 0, 0, 0);
   --background: rgba(0, 0, 0, 0);
@@ -98,20 +105,26 @@ $button-active-blue: #1669f2;
 
 .userPhoto-buttons-name-content {
   background-color: green;
-  height: 30vh;
   padding: 20px;
   .userPhoto-content{
     background-color: red;
-    .userPhoto{
-      width: 10em;
-      border-radius: 50%;
-    }
+      .userPhoto{
+        width: 20em;
+        border-radius: 50%;
+      }
   }
   .name-content{
     background-color: yellow;
   }
+  
   .buttons-content{
     background-color: orange;
+    .close-session {
+      min-width: 20em;
+    }
+    .edit{
+      min-width: 20em;
+    }
 
   }
 }

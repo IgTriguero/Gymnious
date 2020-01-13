@@ -49,16 +49,19 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid class="ion-grid">
+  <ion-grid class="ion-grid-home responsive-sm">
     <ion-row>
-      <ion-col *ngFor="let item of activities | async" col-6 no-padding>
+      <ion-col *ngFor="let item of activities | async" size="6" no-padding>
         <ion-card class="ion-card">
-          <ion-img [src]="item?.photoURL"></ion-img>
-          <ion-card-header class="ion-card-header">
-            <ion-card-title (click)="mostrarModal(item)">{{ item.title }}</ion-card-title>
+          <ion-img [src]="item.photoURL"></ion-img>
+          <ion-card-header class="title">
+            <ion-title (click)="mostrarModal(item)>{{item.title}}</ion-title>
+            <ion-button class="button-add">
+              <ion-icon (click)="guardarActividad(item.uid)" name="add"></ion-icon>
+            </ion-button>
           </ion-card-header>
-          <ion-card-content>
-            {{item.shortDescription}}
+          <ion-card-content class="shortDes">
+          {{item.shortDescription}}  
           </ion-card-content>
           <ion-button (click)="guardarActividad(item.uid)">
             Save

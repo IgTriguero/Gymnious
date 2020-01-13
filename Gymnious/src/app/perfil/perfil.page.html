@@ -10,9 +10,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed>
+  <ion-grid>
     <ion-row class="userPhoto-buttons-name-content">
-
       <ion-col class="userPhoto-content">
         <div>
           <img src="{{ (authService.user | async)?.photoUrl }}" alt="" class="userPhoto">
@@ -24,14 +23,14 @@
 
         </ion-row>
       </ion-col>
-      <ion-col class="buttons-content">
+      <ion-col class="buttons-content" size="2">
         <div>
-          <ion-button (click)="cerrarSesion()">
+          <ion-button class="close-session" (click)="cerrarSesion()">
             Cerrar Sesión
           </ion-button>
         </div>
         <div>
-          <ion-button (click)="editar()">
+          <ion-button class="edit" (click)="editar()">
             Editar
           </ion-button>
         </div>
