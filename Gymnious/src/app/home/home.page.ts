@@ -15,7 +15,6 @@ import { HomeService } from './home.service';
   styleUrls: ["home.page.scss"]
 })
 export class HomePage implements OnInit {
-  activities:Observable<any>;
   
   constructor(
     private titleService: Title,
@@ -25,23 +24,19 @@ export class HomePage implements OnInit {
     private afs: AngularFirestore,
     private perfilService: PerfilService,
     private modalController: ModalController,
-    private homeService: HomeService
+    public homeService: HomeService
   ) {
     
   }
 
   ngOnInit() {
     this.titleService.setTitle("Gymnious");
-    this.activities = this.homeService.activities;
   }
 
   toHome() {
     this.router.navigateByUrl("/home");
   }
 
-  logout() {
-    this.authService.logout();
-  }
   async showPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: LoginComponent,
@@ -62,29 +57,27 @@ export class HomePage implements OnInit {
   guardarActividad(uid: string){
     this.perfilService.addToActividades(uid);
   }
-  eliminarActividad(uid:string){
-    this.perfilService.removeFromActividades(uid);
-  }
   async mostrarModal(item:any){
     const modal = await this.modalController.create({
       component: ActividadModalComponent,
       componentProps: {
-        item
+        item,
+        page:'home'
       }
     });
     return await modal.present();
   }
 
   turnPesas(){
-    this.activities = this.homeService.turnPesas();
+    this.homeService.turnPesas();
   }
   turnCardio(){
-    this.activities = this.homeService.turnCardio();
+    this.homeService.turnCardio();
   }
   turnAbs(){
-    this.activities = this.homeService.turnAbs();
+    this.homeService.turnAbs();
   }
   turnTodos(){
-    this.activities = this.homeService.turnTodos();
+    this.homeService.turnTodos();
   }
 }

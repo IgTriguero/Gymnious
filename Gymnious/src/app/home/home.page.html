@@ -4,31 +4,31 @@
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
     <img class="logo" slot="start" (click)="toHome()" src="https://imgur.com/HlrI7IF.png"/>
-    <div slot="start" class="ion-hide-sm-down">
-      <ion-grid>
+    <div class="ion-hide-sm-down" style="width: 100%">
+      <ion-grid style="width: 50%">
         <ion-row>
-          <ion-col size="3">
+          <ion-col>
             <ion-buttons>
               <ion-button (click)="turnCardio()">
                 CARDIO
               </ion-button>
             </ion-buttons>
           </ion-col>
-          <ion-col size="2">
+          <ion-col>
             <ion-buttons>
               <ion-button (click)="turnPesas()">
                 PESAS
               </ion-button>
             </ion-buttons>
           </ion-col>
-          <ion-col size="4">
+          <ion-col>
             <ion-buttons>
               <ion-button (click)="turnAbs()">
                 ABDOMINALES
               </ion-button>
             </ion-buttons>
           </ion-col>
-          <ion-col size="3">
+          <ion-col>
             <ion-buttons>
               <ion-button (click)="turnTodos()">
                 TODOS
@@ -49,7 +49,7 @@
 <ion-content>
   <ion-grid class="ion-grid-home ion-hide-sm-down">
     <ion-row>
-      <ion-col *ngFor="let item of activities | async" size="6" no-padding>
+      <ion-col *ngFor="let item of homeService.activities | async" size="6" class="ion-no-padding">
         <ion-card class="ion-card">
           <ion-img [src]="item.photoURL"></ion-img>
           <ion-card-header class="title">
@@ -59,16 +59,17 @@
             </ion-button>
           </ion-card-header>
           <ion-card-content class="shortDes">
+            <p>
+              {{item.tag}}
+            </p>
           {{item.shortDescription}}  
           </ion-card-content>
-          <p>
-            {{item.tag}}
-          </p>
+          
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-card class="ion-card ion-hide-md-up" *ngFor="let item of activities | async">
+  <ion-card class="ion-card ion-hide-md-up" *ngFor="let item of homeService.activities | async">
     <ion-img [src]="item.photoURL"></ion-img>
     <ion-card-header class="title">
       <ion-title (click)="mostrarModal(item)">{{item.title}}</ion-title>

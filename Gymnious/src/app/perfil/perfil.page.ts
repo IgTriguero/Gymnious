@@ -31,15 +31,16 @@ export class PerfilPage implements OnInit {
     });
     this.edit = false;
   }
-    async mostrarModal(item:any){
-      const modal = await this.modalController.create({
-        component: ActividadModalComponent,
-        componentProps: {
-          item
-        }
-      });
-      return await modal.present();
-    }
+  async mostrarModal(item:any){
+    const modal = await this.modalController.create({
+      component: ActividadModalComponent,
+      componentProps: {
+        item,
+        page:'perfil'
+      }
+    });
+    return await modal.present();
+  }
   toHome(){
     this.router.navigateByUrl("/home");
   }

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HomePage } from './home/home.page';
+import { HomeService } from './home/home.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,9 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private homeService: HomeService,
+    private menuController: MenuController
   ) {
     this.initializeApp();
   }
@@ -26,4 +29,21 @@ export class AppComponent {
     });
   }
 
+  
+  turnCardio(){
+    this.homeService.turnCardio();
+    this.menuController.close();
+  }
+  turnAbs(){
+    this.homeService.turnAbs();
+    this.menuController.close();
+  }
+  turnTodos(){
+    this.homeService.turnTodos();
+    this.menuController.close();
+  }
+  turnPesas(){
+    this.homeService.turnPesas();
+    this.menuController.close();
+  }
 }

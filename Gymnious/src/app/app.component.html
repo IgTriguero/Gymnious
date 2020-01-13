@@ -1,6 +1,6 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
-  <ion-menu side="start" class="ion-hide-md-up">
+  <ion-menu contentId="sideMenu" side="start" swipeGesture="false">
     <ion-header>
       <ion-toolbar>
         <ion-title>Gymnious</ion-title>
@@ -9,29 +9,29 @@
     <ion-content id="sideMenu">
       <ion-item class="item item-trns">
         <ion-buttons>
-          <ion-button (click)="onClick()">
+          <ion-button (click)="turnCardio()">
             CARDIO
           </ion-button>
         </ion-buttons>
       </ion-item>
       <ion-item class="item item-trns">
         <ion-buttons>
-          <ion-button (click)="onClick()">
+          <ion-button (click)="turnPesas()">
             PESAS
           </ion-button>
         </ion-buttons>
       </ion-item>
       <ion-item class="item item-trns">
         <ion-buttons>
-          <ion-button (click)="onClick()">
+          <ion-button (click)="turnAbs()">
             ABDOMINALES
           </ion-button>
         </ion-buttons>
       </ion-item>
       <ion-item class="item item-trns">
         <ion-buttons>
-          <ion-button (click)="onClick()">
-            OTROS
+          <ion-button (click)="turnTodos()">
+            TODOS
           </ion-button>
         </ion-buttons>
       </ion-item>

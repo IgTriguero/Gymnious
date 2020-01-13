@@ -69,7 +69,7 @@ export class AuthService {
       email: user.email,
       photoUrl: user.photoURL,
       displayName: user.displayName,
-      actividades: user.actividades
+      actividades: []
     };
     return userRef.set(data);
   }

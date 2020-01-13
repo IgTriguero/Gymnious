@@ -1,8 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start" class="ion-hide-md-up">
-      <ion-menu-button autoHide="false"></ion-menu-button>
-    </ion-buttons>
     <img class="logo" slot="start" (click)="toHome()" src="https://imgur.com/HlrI7IF.png"/>
   </ion-toolbar>
 </ion-header>
@@ -12,7 +9,7 @@
     <ion-row class="userPhoto-buttons-name-content">
       <ion-col class="userPhoto-content" size="2">
         <div>
-          <img src="{{ (authService.user | async)?.photoUrl }}" alt="" class="userPhoto">
+          <img [src]="(authService.user | async)?.photoUrl" alt="" class="userPhoto">
         </div>
       </ion-col>
       <ion-col class="name-content ion-text-center ion-text-justify">
@@ -37,7 +34,7 @@
     <div class="card">
       <div class="header">
         <div class="avatar">
-          <img src="{{ (authService.user | async)?.photoUrl }}" alt="">
+          <img [src]="(authService.user | async)?.photoUrl" alt="">
         </div>
       </div>
       <div class="card-body">
@@ -53,7 +50,7 @@
 
   <ion-grid class="ion-grid-profile ion-hide-sm-down">
     <ion-row>
-      <ion-col *ngFor="let item of actividades | async" size="6" no-padding>
+      <ion-col *ngFor="let item of actividades | async" size="6" class="ion-no-padding">
         <ion-card class="ion-card">
           <ion-img [src]="item?.photoURL"></ion-img>
           <ion-card-header class="ion-card-header">
@@ -62,7 +59,7 @@
               <ion-icon name="close"></ion-icon>
             </ion-button>
           </ion-card-header>
-          <ion-card-content>
+          <ion-card-content class="shortDes">
             {{item.shortDescription}}
           </ion-card-content>
         </ion-card>

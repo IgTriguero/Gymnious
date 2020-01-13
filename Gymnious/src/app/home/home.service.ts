@@ -13,23 +13,24 @@ export class HomeService {
   constructor(private afs: AngularFirestore) { }
 
   turnPesas(){
-    return this.afs
+    this.activities = this.afs
     .collection(`activities`, ref=> ref.where("tag", "==", "pesas"))
     .valueChanges();
   }
   turnCardio(){
-    return this.afs
+    this.activities = this.afs
     .collection(`activities`, ref=> ref.where("tag", "==", "cardio"))
     .valueChanges();
   }
   turnAbs(){
-    return this.afs
+    this.activities = this.afs
     .collection(`activities`, ref=> ref.where("tag", "==", "abs"))
     .valueChanges();
   }
   turnTodos(){
-    return this.afs
+    this.activities = this.afs
     .collection(`activities`)
     .valueChanges();
   }
+  
 }
