@@ -59,7 +59,14 @@
 }
 
 .shortDes {
+  padding: 1em;
   margin-top: 1em;
+  display: block;
+  p {
+    margin-bottom: 1em;
+    text-decoration: underline;
+    color: grey;
+  }
 }
 
 .button-add {
